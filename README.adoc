@@ -3,4 +3,4 @@
 === Tools:
 - Java 17
 - Gradle
-- JOGL 2.4
+- JOGL 2.4.0-rc-20210111
