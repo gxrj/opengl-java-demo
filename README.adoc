@@ -1,0 +1,6 @@
+# opengl-java-demo
+
+=== Tools:
+- Java 17
+- Gradle
+- JOGL 2.4.0-rc-20210111
