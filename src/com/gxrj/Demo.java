@@ -22,7 +22,7 @@ public class Demo extends JFrame implements GLEventListener {
         this.setVisible( true );
     }
 
-    public static void main(String[] args) {
+    public static void main( String[] args ) {
         new Demo();
     }
 
