@@ -28,7 +28,7 @@ public class ErrorChecker {
             log = new byte[ len[0] ];
             gl.glGetShaderInfoLog( shaderObj, len[0], charWritten, 0, log, 0 );
     
-            System.out.println( "Shader Info Log: " );
+            System.out.print( "Shader Info Log: " );
 
             for( byte word: log ) 
                 System.out.print( (char) word );
@@ -47,10 +47,12 @@ public class ErrorChecker {
             log = new byte[ len[0] ];
             gl.glGetProgramInfoLog( shaderProgram, len[0], charWritten, 0, log, 0 );
 
-            System.out.println( "Program Info Log: " );
+            System.out.print( "Program Info Log: " );
 
             for( byte word: log )
                 System.out.print( (char) word );
+
+            System.out.println( "\n" );
         } 
     }
 
@@ -59,7 +61,7 @@ public class ErrorChecker {
         checkOpenGLError( gl );
         gl.glGetShaderiv( shaderObj, GL4.GL_COMPILE_STATUS, compilationStatus, 0 );
         if( compilationStatus[0] != 1 ) {
-            System.out.println( "Compilation failed" );
+            System.out.println( "\nCompilation failed" );
             printShaderLog( gl, shaderObj );
         }
     }
@@ -69,7 +71,7 @@ public class ErrorChecker {
         checkOpenGLError( gl );
         gl.glGetProgramiv( shaderProgram, GL4.GL_LINK_STATUS, linkingStatus, 0 );
         if( linkingStatus[0] != 1 ) {
-            System.out.println( "Linking failed" );
+            System.out.println( "\nLinking failed" );
             programLog( gl, shaderProgram );
         }
     }

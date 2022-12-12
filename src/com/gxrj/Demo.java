@@ -71,7 +71,7 @@ public class Demo extends JFrame implements GLEventListener {
         GL4 gl = (GL4) drawable.getGL();
 
         gl.glUseProgram( this.renderingProgram );
-        gl.glPointSize( 30.0f );
+        gl.glPointSize( 10.0f );
         gl.glDrawArrays( GL4.GL_POINTS, 0, 1 );
     }
 

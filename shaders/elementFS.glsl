@@ -1,4 +1,4 @@
-#version 430
+#version __VERSION__
 
 out vec4 color;
 
