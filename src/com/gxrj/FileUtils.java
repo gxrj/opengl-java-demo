@@ -13,7 +13,21 @@ public class FileUtils {
         Path path = Paths.get( filename ).toAbsolutePath().normalize();
         try{
             List<String> lines = Files.readAllLines( path );
-            return lines.toArray( new String[]{} );
+
+           //Alternative 1
+           return lines.parallelStream()
+                         /*Must append a newline separator to the lines as GLSL compiler
+                          isn't capable to set preprocessor directives delimiter*/
+                        .map( line -> line += "\n" )
+                        .toList()
+                        .toArray( new String[]{} ); 
+        
+        /** 
+            // Alternative 2
+            var arr = lines.toArray( new String[]{} );
+            arr[0] += "\n";
+            return arr;
+        */
         }
         catch( IOException ex ) { 
             ex.printStackTrace();
