@@ -16,9 +16,9 @@ public class FileUtils {
 
            //Alternative 1
            return lines.parallelStream()
-                         /*Must append a newline separator to the lines as GLSL compiler
-                          isn't capable to set preprocessor directives delimiter*/
-                        .map( line -> line += "\n" )
+                         /*Must append a newline separator to the preprocessor directives 
+                         lines to make GLSL compiler capable to distinguish it from the rest of the code*/
+                        .map( line -> line.startsWith( "#", 0 ) ? line+=" \n" : line )
                         .toList()
                         .toArray( new String[]{} ); 
         
