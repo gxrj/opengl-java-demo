@@ -23,7 +23,7 @@ public class FileUtils {
                         .toArray( new String[]{} ); 
         
         /** 
-            // Alternative 2 [] Append \n at the first line only ]
+            //Alternative 2 [] Append \n at the first line only ]
             var arr = lines.toArray( new String[]{} );
             arr[0] += "\n";
             return arr;
