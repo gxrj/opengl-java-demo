@@ -14,7 +14,7 @@ public class FileUtils {
         try{
             List<String> lines = Files.readAllLines( path );
 
-           //Alternative 1
+           //Alternative 1 [ Append \n at preprocessor lines ]
            return lines.parallelStream()
                          /*Must append a newline separator to the preprocessor directives 
                          lines to make GLSL compiler capable to distinguish it from the rest of the code*/
@@ -23,7 +23,7 @@ public class FileUtils {
                         .toArray( new String[]{} ); 
         
         /** 
-            // Alternative 2
+            // Alternative 2 [] Append \n at the first line only ]
             var arr = lines.toArray( new String[]{} );
             arr[0] += "\n";
             return arr;
