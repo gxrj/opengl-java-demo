@@ -71,8 +71,7 @@ public class Demo extends JFrame implements GLEventListener {
         GL4 gl = (GL4) drawable.getGL();
 
         gl.glUseProgram( this.renderingProgram );
-        gl.glPointSize( 10.0f );
-        gl.glDrawArrays( GL4.GL_POINTS, 0, 1 );
+        gl.glDrawArrays( GL4.GL_TRIANGLES, 0, 3 );
     }
 
     public void dispose( GLAutoDrawable  drawable ) { }
