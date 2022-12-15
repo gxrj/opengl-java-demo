@@ -35,6 +35,25 @@ public class ErrorChecker {
         }
     }
 
+    private static void printShaderLog( GL4 gl, int shaderObj, String shaderType ) {
+
+        int[] len = new int[1];
+        int[] charWritten = new int[1];
+        byte[] log = null;
+
+        gl.glGetShaderiv( shaderObj, GL4.GL_INFO_LOG_LENGTH, len, 0 );
+
+        if( len[0] > 0 ) {
+            log = new byte[ len[0] ];
+            gl.glGetShaderInfoLog( shaderObj, len[0], charWritten, 0, log, 0 );
+    
+            System.out.print( shaderType.toUpperCase() + " shader info log: " );
+
+            for( byte word: log ) 
+                System.out.print( (char) word );
+        }
+    }
+
     private static void programLog( GL4 gl, int shaderProgram ) {
 
         int[] len = new int[1];
@@ -63,6 +82,17 @@ public class ErrorChecker {
         if( compilationStatus[0] != 1 ) {
             System.out.println( "\nCompilation failed" );
             printShaderLog( gl, shaderObj );
+        }
+    }
+
+    static void getCompilationErrors( GL4 gl, int shaderObj, String shaderType ) {
+        int[] compilationStatus = new int[1];
+        checkOpenGLError( gl );
+        gl.glGetShaderiv( shaderObj, GL4.GL_COMPILE_STATUS, compilationStatus, 0 );
+
+        if( compilationStatus[0] != 1 ) {
+            System.out.println( "\nCompilation failed" );
+            printShaderLog( gl, shaderObj, shaderType );
         }
     }
 
