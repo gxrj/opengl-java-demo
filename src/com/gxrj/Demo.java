@@ -32,40 +32,12 @@ public class Demo extends JFrame implements GLEventListener {
     public void init( GLAutoDrawable  drawable ) {
         GL4 gl = (GL4) drawable.getGL();
         
-        this.renderingProgram = createShaderProgram( gl );
+        this.renderingProgram = ShaderUtils.createShaderProgram( gl, 
+                                            "shaders/elementVS.glsl", 
+                                          "shaders/elementFS.glsl" );
         gl.glGenVertexArrays( this.vao.length, this.vao, 0 );
         gl.glBindVertexArray( this.vao[ 0 ] );
-     } 
-
-    private int createShaderProgram( GL4 gl ) {
-
-        String[] vShaderSource = FileUtils.readShaderSource( "shaders/elementVS.glsl" );
-        String[] fShaderSource = FileUtils.readShaderSource( "shaders/elementFS.glsl" );
-
-        int vShaderObj = gl.glCreateShader( GL4.GL_VERTEX_SHADER );
-        gl.glShaderSource( vShaderObj, vShaderSource.length, vShaderSource, null, 0 );
-        gl.glCompileShader( vShaderObj );
-
-        ErrorChecker.getCompilationErrors( gl, vShaderObj, "vertex" );
-
-        int fShaderObj = gl.glCreateShader( GL4.GL_FRAGMENT_SHADER );
-        gl.glShaderSource( fShaderObj, fShaderSource.length, fShaderSource, null, 0 );
-        gl.glCompileShader( fShaderObj );
-
-        ErrorChecker.getCompilationErrors( gl, fShaderObj, "fragment" );
-
-        int shaderProgram = gl.glCreateProgram();
-        gl.glAttachShader( shaderProgram, vShaderObj );
-        gl.glAttachShader( shaderProgram, fShaderObj );
-        gl.glLinkProgram( shaderProgram );
-
-        ErrorChecker.getLinkingErrors( gl, shaderProgram );
-
-        gl.glDeleteShader( vShaderObj );
-        gl.glDeleteShader( fShaderObj );
-
-        return shaderProgram;
-    }
+    } 
 
     public void display( GLAutoDrawable  drawable ) {
         GL4 gl = (GL4) drawable.getGL();
