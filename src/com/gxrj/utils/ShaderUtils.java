@@ -1,10 +1,10 @@
-package com.gxrj;
+package com.gxrj.utils;
 
 import com.jogamp.opengl.GL4;
 
 public class ShaderUtils {
     
-    static int createShaderProgram( GL4 gl, String vertexShaderFilePath, String fragmentShaderFilePath ) {
+    public static int createShaderProgram( GL4 gl, String vertexShaderFilePath, String fragmentShaderFilePath ) {
 
         String[] vShaderSource = FileUtils.readShaderSource( vertexShaderFilePath );
         String[] fShaderSource = FileUtils.readShaderSource( fragmentShaderFilePath );

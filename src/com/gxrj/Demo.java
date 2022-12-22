@@ -2,6 +2,7 @@ package com.gxrj;
 
 import javax.swing.JFrame;
 
+import com.gxrj.utils.ShaderUtils;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;

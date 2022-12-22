@@ -1,4 +1,4 @@
-package com.gxrj;
+package com.gxrj.utils;
 
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.glu.GLU;
