@@ -3,6 +3,9 @@ package com.gxrj.utils;
 import com.jogamp.opengl.GL4;
 import com.jogamp.opengl.glu.GLU;
 
+/**
+ * Custom error checker for openGL program shader compilation
+ */
 public class ErrorChecker {
     
     static void checkOpenGLError( GL4 gl ) {
