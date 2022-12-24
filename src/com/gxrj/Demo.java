@@ -35,6 +35,23 @@ public class Demo extends JFrame implements GLEventListener {
         animator.start();
     }
 
+    /**Clears the old buffers*/
+    private void clearScreenBuffers( GL4 gl ) {
+        gl.glClear( GL4.GL_DEPTH_BUFFER_BIT );
+        gl.glClear( GL4.GL_COLOR_BUFFER_BIT );
+    }
+
+    /**Updates the element position and sends the value to the rendering program 
+     * before sends it to the pipeline*/
+    private void updatePosition( GL4 gl ) {
+        locationX += increment;
+        if( locationX > 1.0f || locationX < -1.0f ) { //Bounces when off bounds
+            increment = -increment;
+        }
+        int offsetReference = gl.glGetUniformLocation( renderingProgram, "offset" );
+        gl.glProgramUniform1f( renderingProgram, offsetReference, locationX );
+    }
+
     public void init( GLAutoDrawable  drawable ) {
         GL4 gl = (GL4) drawable.getGL();
         
@@ -49,20 +66,12 @@ public class Demo extends JFrame implements GLEventListener {
     public void display( GLAutoDrawable  drawable ) {
         GL4 gl = (GL4) drawable.getGL();
 
-        //Clears the old buffers
-        gl.glClear( GL4.GL_DEPTH_BUFFER_BIT );
-        gl.glClear( GL4.GL_COLOR_BUFFER_BIT );
+        this.clearScreenBuffers( gl );
         
         //Declares the shader program to be used by its reference
         gl.glUseProgram( this.renderingProgram );
         
-        //Updates the element position
-        locationX += increment;
-        if( locationX > 1.0f || locationX < -1.0f ) { //Bounces when off bounds
-            increment = -increment;
-        }
-        int offsetReference = gl.glGetUniformLocation( renderingProgram, "offset" );
-        gl.glProgramUniform1f( renderingProgram, offsetReference, locationX );
+        this.updatePosition( gl );
         
         //Initiates the pipeline processing
         gl.glDrawArrays( GL4.GL_TRIANGLES, 0, 3 );
