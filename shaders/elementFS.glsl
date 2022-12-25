@@ -19,7 +19,7 @@ void drawOneColor() {
 void drawMultipleColors() {
     if( gl_FragCoord.x < getColorDelimiter( offset ) )
         color = vec4( 1.0, 0.0, 0.0, 1.0 );
-    else if( gl_FragCoord.x < getColorDemlimiter( offset ) + 50 )
+    else if( gl_FragCoord.x < getColorDelimiter( offset ) + 50 )
         color = vec4( 0.0, 1.0, 0.0, 1.0 );
     else
         color = vec4( 0.0, 0.0, 1.0, 1.0 );
