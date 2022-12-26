@@ -19,6 +19,8 @@ public class Demo extends JFrame implements GLEventListener {
     private float locationX = 0.0f;
     private float increment = 0.01f;
 
+    private long lastRenderTime = 0l;
+
     Demo() {
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         this.setTitle( "JOGL demo" );
@@ -66,15 +68,19 @@ public class Demo extends JFrame implements GLEventListener {
     public void display( GLAutoDrawable  drawable ) {
         GL4 gl = (GL4) drawable.getGL();
 
-        this.clearScreenBuffers( gl );
-        
-        //Declares the shader program to be used by its reference
-        gl.glUseProgram( this.renderingProgram );
-        
-        this.updatePosition( gl );
-        
-        //Initiates the pipeline processing
-        gl.glDrawArrays( GL4.GL_TRIANGLES, 0, 3 );
+        if( System.currentTimeMillis() > lastRenderTime + 33.33 ) {
+            this.clearScreenBuffers( gl );
+            
+            //Declares the shader program to be used by its reference
+            gl.glUseProgram( this.renderingProgram );
+            
+            this.updatePosition( gl );
+            
+            //Initiates the pipeline processing
+            gl.glDrawArrays( GL4.GL_TRIANGLES, 0, 3 );
+            
+            lastRenderTime = System.currentTimeMillis();
+        }
     }
 
     public void dispose( GLAutoDrawable  drawable ) { }
