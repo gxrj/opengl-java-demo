@@ -1,6 +1,14 @@
 # opengl-java-demo
 
-=== Tools:
+== Description
+
+Just a "Hello World" for OpenGL in java by using Jogamp's Java for OpenGL (JOGL)
+
+=== The bellow animation shows what you get by running this application:
+
+image::assets/jogl-demo.gif[]
+
+=== Used tools:
 - Java 21
 - Gradle
 - JOGL 2.5.0
