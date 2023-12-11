@@ -22,9 +22,13 @@ public class Engine extends JFrame implements GLEventListener {
     private long lastRenderTime = 0l;
 
     Engine() {
+        this( "JOGL demo", 800, 600 );
+    }
+
+    Engine( String title, int width, int height ) {
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        this.setTitle( "JOGL demo" );
-        this.setSize( 800, 600 );
+        this.setTitle( title );
+        this.setSize( width, height );
         this.setLocation( 270, 65 );
 
         glJPanel = new GLJPanel();
