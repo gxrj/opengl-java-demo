@@ -1,5 +1,4 @@
 plugins {
-    id 'application'
     id 'java'
 }
 
@@ -17,6 +16,3 @@ dependencies {
     implementation 'org.jogamp.gluegen:gluegen-rt-main:2.5.0'
 }
 
-application {
-    mainClass = 'com.gxrj.Demo'
-}

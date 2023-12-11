@@ -9,7 +9,7 @@ import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.Animator;
 
-public class Demo extends JFrame implements GLEventListener {
+public class Engine extends JFrame implements GLEventListener {
     
     private GLJPanel glJPanel;
 
@@ -21,7 +21,7 @@ public class Demo extends JFrame implements GLEventListener {
 
     private long lastRenderTime = 0l;
 
-    Demo() {
+    Engine() {
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         this.setTitle( "JOGL demo" );
         this.setSize( 800, 600 );
@@ -57,7 +57,7 @@ public class Demo extends JFrame implements GLEventListener {
     public void init( GLAutoDrawable  drawable ) {
         GL4 gl = (GL4) drawable.getGL();
         
-        var shadersPath = "app/src/main/shaders/";
+        var shadersPath = "src/main/shaders/";
 
         this.renderingProgram = ShaderUtils
                                     .createShaderProgram( 
@@ -87,8 +87,4 @@ public class Demo extends JFrame implements GLEventListener {
 
     public void dispose( GLAutoDrawable  drawable ) { }
     public void reshape( GLAutoDrawable  drawable, int x, int y, int width, int height ) { }
-
-    public static void main( String[] args ) {
-        new Demo();
-    }
 }
