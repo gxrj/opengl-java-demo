@@ -4,19 +4,19 @@ plugins {
 }
 
 repositories {
-	mavenCentral()
-	maven {
-	    url "https://jogamp.org/deployment/maven/"
-	}
+    mavenCentral()
+    maven {
+        url "https://jogamp.org/deployment/maven/"
+    }
 }
 
 dependencies {
-	// https://mvnrepository.com/artifact/org.jogamp.jogl/jogl-all-main
-	implementation 'org.jogamp.jogl:jogl-all-main:2.5.0'
-	// https://mvnrepository.com/artifact/org.jogamp.gluegen/gluegen-rt-main
-	implementation 'org.jogamp.gluegen:gluegen-rt-main:2.5.0'
+    // https://mvnrepository.com/artifact/org.jogamp.jogl/jogl-all-main
+    implementation 'org.jogamp.jogl:jogl-all-main:2.5.0'
+    // https://mvnrepository.com/artifact/org.jogamp.gluegen/gluegen-rt-main
+    implementation 'org.jogamp.gluegen:gluegen-rt-main:2.5.0'
 }
 
 application {
-	mainClass = 'com.gxrj.Demo'
+    mainClass = 'com.gxrj.Demo'
 }
