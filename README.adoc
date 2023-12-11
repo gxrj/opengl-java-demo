@@ -2,7 +2,7 @@
 
 == Description
 
-Just a "Hello World" for OpenGL in java by using Jogamp's Java for OpenGL (JOGL)
+Just a "Hello World" for OpenGL in java by using Jogamp's Java binding for OpenGL (JOGL)
 
 === The bellow animation shows what you get by running this application:
 
